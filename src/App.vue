@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue'
+  import { ref, onMounted, watch } from 'vue'
   const count = ref(0)
   const minCount = ref(0)
 
@@ -17,6 +17,16 @@
   const reset = () => {
     count.value = 0
   }
+
+  onMounted(() => {
+    if (localStorage.getItem('count')) {
+      count.value = parseInt(localStorage.getItem('count'))
+    }
+  })
+
+  watch(count, (value) => {
+    localStorage.setItem('count', value)
+  })
 </script>
 
 <template>

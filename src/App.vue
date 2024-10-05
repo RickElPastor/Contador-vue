@@ -1,9 +1,17 @@
 <script setup>
   import { ref } from 'vue'
   const count = ref(0)
+  const minCount = ref(0)
+
 
   const increment = () => {
     count.value++
+  }
+
+  const decrement = () => {
+    if (count.value > minCount.value) {
+      count.value--
+    }
   }
 
   const reset = () => {
@@ -16,6 +24,7 @@
     <h1>Contador Incremental</h1>
     <p>{{ count }}</p>
     <button @click="increment" class="up">Incrementar</button>
+    <button @click="decrement" class="down">Decrementar</button>
     <button @click="reset" class="reset">Resetear</button>
   </div>
 </template>
@@ -47,8 +56,14 @@
     border: none;
     border-radius: 5px;
   }
-  .reset {
+  .down {
     background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  .reset {
+    background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 5px;

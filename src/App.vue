@@ -1,0 +1,56 @@
+<script setup>
+  import { ref } from 'vue'
+  const count = ref(0)
+
+  const increment = () => {
+    count.value++
+  }
+
+  const reset = () => {
+    count.value = 0
+  }
+</script>
+
+<template>
+  <div class="container">
+    <h1>Contador Incremental</h1>
+    <p>{{ count }}</p>
+    <button @click="increment" class="up">Incrementar</button>
+    <button @click="reset" class="reset">Resetear</button>
+  </div>
+</template>
+
+<style scoped>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  button {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .up {
+    background-color: #4c82af;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  .reset {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+</style>
